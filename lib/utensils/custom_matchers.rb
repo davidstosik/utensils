@@ -146,6 +146,16 @@ module Utensils
     def have_order(*args)
       Ordered.new(args)
     end
+
+    class HaveRole < Capybara::RSpecMatchers::HaveSelector
+      def initialize(role, *args, &filter_block)
+        super(:role, role, *args, &filter_block)
+      end
+    end
+
+    def have_role(*args)
+      HaveRole.new(*args)
+    end
   end
 end
 
